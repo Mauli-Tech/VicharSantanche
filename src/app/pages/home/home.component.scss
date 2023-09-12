@@ -1,0 +1,39 @@
+.home{
+
+    .img{
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner{
+        text-align: center;
+        margin: 45% 0;
+        
+        .banner-text{
+            color: #ffa500;
+        }
+    }
+
+    .read-btn{
+        background-color: #ffa500;
+        color: black;
+        padding: 5px 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        border: none;
+
+        &:hover{
+            color: #ffa500;
+            background-color: white;
+            border: solid #ffa500 1px;            
+        }
+    }
+
+    .gita{
+        margin: 20px 0px;
+    }
+
+    .dnyaneshwari{
+        margin: 20px 0px;
+    }
+}

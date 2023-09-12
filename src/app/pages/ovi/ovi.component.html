@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="container adhyay">
+    <h1 class="heading">ज्ञानेश्वरी <br> {{adhyay_name}}</h1>
+    <div class="shlok-container" *ngFor="let item of this.data">
+        <h3 class="shlok">{{item?.ovi}}</h3>
+        <h4 class="arth">अर्थ - {{item?.ovi_arth}}</h4>
+    </div>
+</div>
+<app-footer></app-footer>
+

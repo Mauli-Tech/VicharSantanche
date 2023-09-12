@@ -1,0 +1,9 @@
+<app-header></app-header>
+<div class="container adhyay">
+    <h1 class="heading">श्रीमद्‌भगवद्‌गीता <br> {{adhyay_name}}</h1>
+    <div class="shlok-container" *ngFor="let item of this.data">
+        <h3 class="shlok">{{item?.shlok}}</h3>
+        <h4 class="arth">अर्थ - {{item?.arth}}</h4>
+    </div>
+</div>
+<app-footer></app-footer>

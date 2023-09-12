@@ -1,0 +1,72 @@
+.footer {
+    background-color: #ffa500;
+    color: white;
+
+    .logo-text-link{
+        text-decoration: none;
+    }
+
+    .footer-container {
+        padding: 20px;
+
+        .logo-text {
+            padding-top: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+
+            &:hover{
+                font-weight: bolder;
+                color: black;
+            }
+        }
+
+        .email {
+            padding: 10px 0px;
+            font-size: 20px;
+        }
+
+        .footer-title {
+            font-size: 20px;
+        }
+
+        .footer-links {
+            font-size: 15px;
+            text-decoration: none !important;
+            color: white;
+
+            &:hover {
+                text-decoration: none;
+                font-weight: bold;
+                color: black
+            }
+        }
+    }
+}
+
+.copyright {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+    .center-align{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .insta {
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+            color: orange;
+            font-weight: 800;
+        }
+    }
+
+    .insta-logo {
+        width: 30px;
+    }
+}

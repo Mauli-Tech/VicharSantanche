@@ -1,0 +1,21 @@
+.navigation{
+    background-color: #ffa500 !important;
+    padding: 20px 0px;
+
+    .logo{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .item{
+        font-size: 20px;
+        color: white;
+        font-weight: 500;
+
+        &:hover{
+            font-weight: 800;
+            color: black;
+        }
+    }
+}
