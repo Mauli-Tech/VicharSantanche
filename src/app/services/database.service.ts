@@ -27,6 +27,28 @@ function sortOviData(data: any) {
   return data
 }
 
+function sortChaupaiData(data: any) {
+  data.sort(function (a: any, b: any) {
+      const keyA = a.serial_no
+      const keyB = b.serial_no
+      if (keyA < keyB) return -1;
+      if (keyA > keyB) return 1;
+      return 0;
+  })
+  return data
+}
+
+function sortSopanData(data: any) {
+  data.sort(function (a: any, b: any) {
+      const keyA = a.sopan_no
+      const keyB = b.sopan_no
+      if (keyA < keyB) return -1;
+      if (keyA > keyB) return 1;
+      return 0;
+  })
+  return data
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +74,36 @@ export class DatabaseService {
         return { error: error }
     }
     data = sortOviData(data)
+    return data
+  }
+
+  async getChaupai(kand_no: number, sopan_no: number){
+    let { data, error } = await supabase.from("Chaupai").select('*').eq('kand_no', kand_no).eq('sopan_no', sopan_no)
+    if (error) {
+        console.log(error)
+        return { error: error }
+    }
+    data = sortChaupaiData(data)
+    return data
+  }
+
+  async getSopan(kand_no: number){
+    let { data, error } = await supabase.from("Sopan").select('*').eq('kand_no', kand_no)
+    if (error) {
+        console.log(error)
+        return { error: error }
+    }
+    data = sortSopanData(data)
+    return data
+  }
+
+  async getSopanDetails(kand_no: number, sopan_no: number){
+    let { data, error } = await supabase.from("Sopan").select('*').eq('kand_no', kand_no).eq('sopan_no', sopan_no)
+    if (error) {
+        console.log(error)
+        return { error: error }
+    }
+    data = sortSopanData(data)
     return data
   }
 }

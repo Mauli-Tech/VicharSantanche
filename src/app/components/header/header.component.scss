@@ -1,21 +1,38 @@
-.navigation{
-    background-color: #ffa500 !important;
-    padding: 20px 0px;
+.navbar {
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
 
-    .logo{
-        font-size: 30px;
+.navbar-brand {
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+
+    &:hover{
         font-weight: bold;
-        color: white;
+        color: #ffd700 !important;
     }
+}
 
-    .item{
-        font-size: 20px;
-        color: white;
-        font-weight: 500;
+.navbar-nav {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    transition: transform 0.3s ease-in-out;
+}
 
-        &:hover{
-            font-weight: 800;
-            color: black;
-        }
+.item {
+    color: white !important;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s, transform 0.2s;
+
+    &:hover{
+        color: #ffd700 !important;
+        transform: scale(1.1);
     }
 }

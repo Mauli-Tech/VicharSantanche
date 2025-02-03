@@ -1,26 +1,23 @@
 <app-header></app-header>
-<div class="container home">
-    <div class="gita">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-6">
-                <img src="assets/wallpaper.png" class="img">
-            </div>
-            <div class="col-lg-3 col-md-6 col-6">
-                <div class="banner">
-                    <h1 class="banner-text">सार्थ <br>श्रीमद्भगवद्गीता</h1>
-                    <button class="read-btn" (click)="this.router.navigate(['gita'])">Read More</button>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-6">
-                <div class="banner">
-                    <h1 class="banner-text">सार्थ <br>ज्ञानेश्वरी</h1>
-                    <button class="read-btn" (click)="this.router.navigate(['dnyaneshwari'])">Read More</button>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-6">
-                <img src="assets/adhyay18.jpg" class="img">
-            </div>
+
+<div class="library-container">
+    <div class="book-grid">
+        <div *ngFor="let book of books" class="book-card" (click)="openBook(book)">
+            <img [src]="book.cover" alt="{{ book.title }}" class="book-cover" />
+            <h2 class="book-title">{{ book.title }}</h2>
         </div>
     </div>
 </div>
+
+<!-- Book Details Modal -->
+<div class="modal" *ngIf="selectedBook" @fadeIn>
+    <div class="modal-content" @zoomIn>
+        <span class="close" (click)="closeBook()">&times;</span>
+        <img [src]="selectedBook.cover" alt="{{ selectedBook.title }}" class="book" />
+        <h2>{{ selectedBook.title }}</h2>
+        <p>{{ selectedBook.description }}</p>
+        <button (click)="redirectBook(selectedBook.url)" class="read-button">Read Now</button>
+    </div>
+</div>
+
 <app-footer></app-footer>
