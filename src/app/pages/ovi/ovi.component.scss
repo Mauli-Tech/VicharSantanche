@@ -1,31 +1,79 @@
-.adhyay{
+// Variables for theme
+$parchment-bg: #fdf6e3;
+$parchment-light: #fffdf7;
+$accent-color: #d4b483;
+$text-dark: #2c2c2c;
+$text-muted: #5a4636;
+$heading-color: #4a2c2a;
 
-    .heading{
-        font-size: 30px;
-        text-align: center;
-        font-weight: bold;
-        margin-top: 30px;
-        margin-bottom: 20px;
-        line-height: 50px;
+// Night mode variables
+$night-bg: #1c1b18;
+$night-text: #f5e6c5;
+$night-accent: #c9a46c;
+
+.container {
+  &.adhyay {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background: $parchment-bg;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Noto Serif Devanagari', serif;
+
+    .heading {
+      text-align: center;
+      font-size: 2.2rem;
+      line-height: 2.75rem;
+      color: $heading-color;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid $accent-color;
+      padding-bottom: 1rem;
     }
 
-    .shlok-container{
-        margin: 10px 0px;
+    .shlok-container {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border-left: 4px solid $accent-color;
+      background: $parchment-light;
+
+      .shlok {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: $text-dark;
         text-align: center;
+      }
 
-        .shlok{
-            font-size: 18px;
-            color: #ffa500;
-            font-weight: bold;
-            margin-bottom: 10px;
-            line-height: 25px;
-        }
-
-        .arth{
-            font-size: 18px;
-            color: black;
-            line-height: 25px;
-            font-weight: bold;
-        }
+      .arth {
+        font-size: 1.1rem;
+        color: $text-muted;
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
     }
+  }
+}
+
+// Night mode theme
+.night-mode {
+  background: $night-bg;
+  color: $night-text;
+
+  .heading {
+    color: $night-accent;
+    border-bottom: 2px solid $night-accent;
+  }
+
+  .shlok-container {
+    background: darken($night-bg, 5%);
+    border-left: 4px solid $night-accent;
+
+    .shlok {
+      color: $night-text;
+    }
+
+    .arth {
+      color: lighten($night-accent, 20%);
+    }
+  }
 }

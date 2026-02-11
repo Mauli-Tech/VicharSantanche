@@ -1,38 +1,73 @@
+// Theme variables
+$nav-gradient: linear-gradient(to right, #4b6cb7, #182848);
+$nav-text: #ffffff;
+$nav-hover: #ffd700;
+$nav-shadow: rgba(0, 0, 0, 0.3);
+
 .navbar {
-    background: linear-gradient(to right, #4b6cb7, #182848);
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
+  background: $nav-gradient;
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px $nav-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.navbar-brand {
-    font-size: 1.8rem;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  .navbar-brand {
+    font-size: 2rem;
+    font-family: 'Noto Serif Devanagari', serif; // classical feel
+    color: $nav-text;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+    letter-spacing: 1px;
 
-    &:hover{
-        font-weight: bold;
-        color: #ffd700 !important;
+    .logo-img {
+       height: 60px; // adjust size as needed width: auto; 
     }
-}
 
-.navbar-nav {
+    &:hover {
+      font-weight: bold;
+      color: $nav-hover !important;
+      transition: color 0.3s ease, transform 0.3s ease;
+      transform: scale(1.05);
+    }
+  }
+
+  .navbar-nav {
     list-style: none;
     display: flex;
-    gap: 15px;
-    transition: transform 0.3s ease-in-out;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+
+    .item {
+      color: $nav-text !important;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      position: relative;
+      transition: color 0.3s, transform 0.2s;
+
+      &:hover {
+        color: $nav-hover !important;
+        transform: scale(1.1);
+
+        // ornamental underline animation
+        &::after {
+          position: absolute;
+          bottom: -8px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1rem;
+          color: $nav-hover;
+          opacity: 0;
+          animation: fadeInUnderline 0.4s forwards;
+        }
+      }
+    }
+  }
 }
 
-.item {
-    color: white !important;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s, transform 0.2s;
-
-    &:hover{
-        color: #ffd700 !important;
-        transform: scale(1.1);
-    }
+// underline animation
+@keyframes fadeInUnderline {
+  from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }

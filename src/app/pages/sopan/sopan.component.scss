@@ -1,21 +1,95 @@
-.sopan{
+// Theme variables
+$parchment-bg: #fdf6e3;
+$parchment-light: #fffdf7;
+$accent-color: #d4b483;
+$title-color: #4a2c2a;
+$text-dark: #2c2c2c;
+$text-muted: #5a4636;
 
-    .title{
-        font-weight: bold;
-        text-align: center;
+// Night mode variables
+$night-bg: #1c1b18;
+$night-text: #f5e6c5;
+$night-accent: #c9a46c;
+
+.container {
+  margin-top: 1rem;
+
+  .sopan {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background: $parchment-bg;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: 'Noto Serif Devanagari', serif;
+
+    .title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: $title-color;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid $accent-color;
+      padding-bottom: 1rem;
     }
 
-    .sopan-title{
-        text-align: center;
-        text-decoration: none;
-        color: orangered;
-        font-size: 18px;
-        cursor: pointer;
+    .row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
 
-        &:hover{
-            color: red;
-            font-weight: bold;
-            font-size: 20px;
+      .sopan-con {
+        background: $parchment-light;
+        padding: 1rem;
+        border-left: 4px solid $accent-color;
+        transition: all 0.3s ease;
+
+        .sopan-title {
+          font-size: 1.3rem;
+          color: $text-dark;
+          cursor: pointer;
+          margin: 0;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: darken($accent-color, 20%);
+            text-decoration: underline;
+          }
         }
+
+        &:hover {
+          background: lighten($parchment-light, 5%);
+          transform: translateX(5px);
+        }
+      }
     }
+  }
+}
+
+// Night mode
+.night-mode {
+  background: $night-bg;
+  color: $night-text;
+
+  .sopan {
+    background: $night-bg;
+    box-shadow: none;
+
+    .title {
+      color: $night-accent;
+      border-bottom: 2px solid $night-accent;
+    }
+
+    .sopan-con {
+      background: darken($night-bg, 5%);
+      border-left: 4px solid $night-accent;
+
+      .sopan-title {
+        color: $night-text;
+
+        &:hover {
+          color: lighten($night-accent, 20%);
+        }
+      }
+    }
+  }
 }

@@ -1,73 +1,92 @@
+// Theme variables
+$footer-bg: linear-gradient(to right, #4b6cb7, #182848);
+$footer-text: #ffffff;
+$footer-hover: #ffd700;
+$footer-shadow: rgba(0, 0, 0, 0.4);
+
 .footer {
-    background-color: #ffa500;
-    color: white;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  background: $footer-bg;
+  padding: 2rem 0;
+  color: $footer-text;
+  box-shadow: 0px -5px 15px $footer-shadow;
 
-    .logo-text-link{
-        text-decoration: none;
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+
+    .logo-img {
+      height: 60px;
+
+      &:hover {
+        transition: color 0.3s ease, transform 0.3s ease;
+        transform: scale(1.05);
+      }
     }
 
-    .footer-container {
-        padding: 20px;
+    .logo-text {
+      font-size: 2rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      color: $footer-text;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
 
-        .logo-text {
-            padding-top: 25px;
-            font-size: 30px;
-            font-weight: bold;
-            color: white;
 
-            &:hover{
-                font-weight: bolder;
-                color: black;
-            }
-        }
-
-        .email {
-            padding: 10px 0px;
-            font-size: 20px;
-        }
-
-        .footer-title {
-            font-size: 20px;
-        }
-
-        .footer-links {
-            font-size: 15px;
-            text-decoration: none !important;
-            color: white;
-
-            &:hover {
-                text-decoration: none;
-                font-weight: bold;
-                color: black
-            }
-        }
+      &:hover {
+        color: $footer-hover;
+        transition: color 0.3s ease;
+      }
     }
+
+    .footer-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      color: $footer-hover;
+    }
+
+    .footer-links {
+      color: $footer-text;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $footer-hover;
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
+// Copyright + social section
 .copyright {
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+  padding: 1rem 0;
+  text-align: center;
 
-    .center-align{
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  .center-align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $footer-hover;
+      }
+
+      img {
+        height: 20px;
+        margin-left: 5px;
+      }
+
+      .insta-logo {
+        height: 22px;
+        margin-right: 5px;
+      }
     }
-
-    .insta {
-        text-decoration: none;
-        color: black;
-
-        &:hover {
-            color: orange;
-            font-weight: 700;
-        }
-    }
-
-    .insta-logo {
-        width: 20px;
-    }
+  }
 }

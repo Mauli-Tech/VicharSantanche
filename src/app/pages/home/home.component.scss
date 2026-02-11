@@ -1,108 +1,117 @@
 .library-container {
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    min-height: 100vh;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-}
+  padding: 2rem;
+  background: #fdf6e3;
+  min-height: 100vh;
 
-.title {
-    font-size: 2.5rem;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
-}
-
-.book-grid {
+  .book-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // uniform card width
+    gap: 2rem;
+    justify-items: center;
+  }
 
-.book-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 15px;
+  .book-card {
+    width: 300px; // fixed width for all cards
+    background: #fffdf7;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+    padding: 1rem;
     cursor: pointer;
-    transition: transform 0.3s;
-}
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-.book-card:hover {
-    transform: scale(1.05);
-}
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
 
-.book-cover {
-    width: 100%;
-    border-radius: 5px;
-}
+    .book-cover {
+      width: 100%;
+      height: auto; // keeps aspect ratio
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
 
-.book-title {
-    margin-top: 10px;
-    font-size: 1.2rem;
+    .book-title {
+      font-size: 1.2rem;
+      font-family: 'Noto Serif Devanagari', serif;
+      color: #4a2c2a;
+      margin: 0;
+    }
+  }
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-}
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(24, 24, 24, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
 
-.modal-content {
+  .modal-content {
+    background: #fdf6e3;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
     width: 90%;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
+    text-align: center; // centers text and inline elements
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    position: relative;
 
-.book {
-    justify-content: center;
-    width: 200px;
-    align-self: center;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      color: #2c2c2c;
+      cursor: pointer;
+      transition: color 0.3s ease;
 
-.book:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-}
+      &:hover {
+        color: #ffd700;
+      }
+    }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
+    .book {
+      display: block;         // ensures it behaves like a block element
+      margin: 0 auto 1rem;    // centers horizontally
+      width: auto;       // prevents stretching
+      max-height: 300px;           // keeps aspect ratio
+      border-radius: 8px;
+    }
 
-.read-button {
-    width: 200px;
-    align-self: center;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(255, 75, 43, 0.3);
-}
+    h2 {
+      font-family: 'Noto Serif Devanagari', serif;
+      color: #4a2c2a;
+      margin-bottom: 1rem;
+    }
 
-.read-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(255, 75, 43, 0.5);
+    p {
+      font-size: 1rem;
+      color: #2c2c2c;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .read-button {
+      background: #d4b483;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: #ff6600;
+        color: #2c2c2c;
+      }
+    }
+  }
 }
