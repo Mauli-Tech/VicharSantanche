@@ -51,6 +51,57 @@ $night-accent: #c9a46c;
         font-style: italic;
       }
     }
+
+    // Pagination
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+
+      .page-btn {
+        font-family: 'Noto Serif Devanagari', serif;
+        background: $parchment-light;
+        color: $heading-color;
+        border: 1.5px solid $accent-color;
+        border-radius: 6px;
+        padding: 0.4rem 0.85rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover:not([disabled]) {
+          background: $accent-color;
+          color: #fff;
+        }
+
+        &.active {
+          background: $heading-color;
+          color: #fff;
+          border-color: $heading-color;
+          font-weight: bold;
+        }
+
+        &[disabled] {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+
+        &.nav-btn {
+          font-size: 0.95rem;
+          padding: 0.4rem 1rem;
+        }
+      }
+    }
+
+    .page-info {
+      text-align: center;
+      margin-top: 0.75rem;
+      color: $text-muted;
+      font-size: 0.95rem;
+    }
   }
 }
 
@@ -68,12 +119,27 @@ $night-accent: #c9a46c;
     background: darken($night-bg, 5%);
     border-left: 4px solid $night-accent;
 
-    .shlok {
-      color: $night-text;
+    .shlok { color: $night-text; }
+
+    .arth { color: lighten($night-accent, 20%); }
+  }
+
+  .pagination .page-btn {
+    background: darken($night-bg, 5%);
+    color: $night-text;
+    border-color: $night-accent;
+
+    &:hover:not([disabled]) {
+      background: $night-accent;
+      color: $night-bg;
     }
 
-    .arth {
-      color: lighten($night-accent, 20%);
+    &.active {
+      background: $night-accent;
+      color: $night-bg;
+      border-color: $night-accent;
     }
   }
+
+  .page-info { color: lighten($night-accent, 15%); }
 }

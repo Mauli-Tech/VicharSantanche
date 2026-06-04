@@ -1,10 +1,36 @@
 <app-header></app-header>
 <div class="container adhyay">
-    <h1 class="heading">ज्ञानेश्वरी <br> {{adhyay_name}}</h1>
-    <div class="shlok-container" *ngFor="let item of this.data">
-        <h3 class="shlok">{{item?.ovi}}</h3>
-        <h4 class="arth">अर्थ - {{item?.ovi_arth}}</h4>
-    </div>
+  <h1 class="heading">ज्ञानेश्वरी <br> {{adhyay_name}}</h1>
+
+  <!-- Ovi list (paginated) -->
+  <div class="shlok-container" *ngFor="let item of data">
+    <h3 class="shlok">{{item?.ovi}}</h3>
+    <h4 class="arth">अर्थ - {{item?.ovi_arth}}</h4>
+  </div>
+
+  <!-- Pagination controls -->
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button class="page-btn nav-btn" (click)="prevPage()" [disabled]="currentPage === 1">
+      &#8592; मागे
+    </button>
+
+    <ng-container *ngFor="let page of pageNumbers">
+      <button
+        class="page-btn"
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)">
+        {{page}}
+      </button>
+    </ng-container>
+
+    <button class="page-btn nav-btn" (click)="nextPage()" [disabled]="currentPage === totalPages">
+      पुढे &#8594;
+    </button>
+  </div>
+
+  <div class="page-info" *ngIf="totalPages > 1">
+    पृष्ठ {{currentPage}} / {{totalPages}} &nbsp;|&nbsp;
+    एकूण ओव्या: {{data.length}}
+  </div>
 </div>
 <app-footer></app-footer>
-

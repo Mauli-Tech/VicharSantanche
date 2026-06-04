@@ -7,44 +7,44 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 function sortShlokData(data: any) {
   data.sort(function (a: any, b: any) {
-      const keyA = a.shlok_no
-      const keyB = b.shlok_no
-      if (keyA < keyB) return -1;
-      if (keyA > keyB) return 1;
-      return 0;
+    const keyA = a.shlok_no
+    const keyB = b.shlok_no
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
   })
   return data
 }
 
 function sortOviData(data: any) {
   data.sort(function (a: any, b: any) {
-      const keyA = a.ovi_no
-      const keyB = b.ovi_no
-      if (keyA < keyB) return -1;
-      if (keyA > keyB) return 1;
-      return 0;
+    const keyA = a.ovi_no
+    const keyB = b.ovi_no
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
   })
   return data
 }
 
 function sortChaupaiData(data: any) {
   data.sort(function (a: any, b: any) {
-      const keyA = a.serial_no
-      const keyB = b.serial_no
-      if (keyA < keyB) return -1;
-      if (keyA > keyB) return 1;
-      return 0;
+    const keyA = a.serial_no
+    const keyB = b.serial_no
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
   })
   return data
 }
 
 function sortSopanData(data: any) {
   data.sort(function (a: any, b: any) {
-      const keyA = a.sopan_no
-      const keyB = b.sopan_no
-      if (keyA < keyB) return -1;
-      if (keyA > keyB) return 1;
-      return 0;
+    const keyA = a.sopan_no
+    const keyB = b.sopan_no
+    if (keyA < keyB) return -1;
+    if (keyA > keyB) return 1;
+    return 0;
   })
   return data
 }
@@ -57,51 +57,60 @@ export class DatabaseService {
 
   constructor() { }
 
-  async getAdhyay(adhyay_no: number){
+  async getAdhyay(adhyay_no: number) {
     let { data, error } = await supabase.from("Shlok").select('*').eq('adhyay_no', adhyay_no)
     if (error) {
-        console.log(error)
-        return { error: error }
+      console.log(error)
+      return { error: error }
     }
     data = sortShlokData(data)
     return data
   }
 
-  async getOvi(adhyay_no: number){
-    let { data, error } = await supabase.from("Ovi").select('*').eq('adhyay', adhyay_no)
+  async getOvi(adhyay_no: number, page: number = 1, pageSize: number = 500) {
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
+
+    const { data, error, count } = await supabase
+      .from("Ovi")
+      .select('*', { count: 'exact' })
+      .eq('adhyay', adhyay_no)
+      .order('ovi_no', { ascending: true })
+      .range(from, to);
+
     if (error) {
-        console.log(error)
-        return { error: error }
+      console.log(error)
+      return { error: error }
     }
-    data = sortOviData(data)
-    return data
+
+    return { data: data ?? [], count: count ?? 0 };
   }
 
-  async getChaupai(kand_no: number, sopan_no: number){
+  async getChaupai(kand_no: number, sopan_no: number) {
     let { data, error } = await supabase.from("Chaupai").select('*').eq('kand_no', kand_no).eq('sopan_no', sopan_no)
     if (error) {
-        console.log(error)
-        return { error: error }
+      console.log(error)
+      return { error: error }
     }
     data = sortChaupaiData(data)
     return data
   }
 
-  async getSopan(kand_no: number){
+  async getSopan(kand_no: number) {
     let { data, error } = await supabase.from("Sopan").select('*').eq('kand_no', kand_no)
     if (error) {
-        console.log(error)
-        return { error: error }
+      console.log(error)
+      return { error: error }
     }
     data = sortSopanData(data)
     return data
   }
 
-  async getSopanDetails(kand_no: number, sopan_no: number){
+  async getSopanDetails(kand_no: number, sopan_no: number) {
     let { data, error } = await supabase.from("Sopan").select('*').eq('kand_no', kand_no).eq('sopan_no', sopan_no)
     if (error) {
-        console.log(error)
-        return { error: error }
+      console.log(error)
+      return { error: error }
     }
     data = sortSopanData(data)
     return data
